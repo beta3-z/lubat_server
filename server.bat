@@ -4,7 +4,7 @@ D:
 set SRV_PATH=D:\server\
 
 if "%1" == "auto" (
-	set bat_name=server_command.bat
+	set bat_name=server_auto.bat
 ) else if "%1" == "stop" (
 	set bat_name=server_stop.bat
 ) else (

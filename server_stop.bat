@@ -1,25 +1,18 @@
 @echo off
 
-REM # BEGIN________________________________________
-:begin
-D:
-if not "%1" == "" goto %1
+if "%1" == "nginx" (
+	set app_path=nginx-1.8.0
+	set stop_cmd=nginx.exe -s stop
+	
+) else if "%1" == "mysql" (
+	set app_path=mysql-5.6\bin\
+    set stop_cmd=mysqladmin.exe shutdown -u root
+	
+) else (
+	echo "You must specify program to control"
+	exit
+)
 
-echo "You must specify program to control"
-goto end;
-
-REM # ________________________________________NGINX
-:nginx
-cd %SRV_PATH%\nginx-1.8.0
-nginx.exe -s stop %2 %3 %4 %5 %6 %7 %8 %9
-goto end
-
-REM # ________________________________________MYSQL
-:mysql
-cd %SRV_PATH%\mysql-5.6\bin
-mysqladmin.exe shutdown -u root %2 %3 %4 %5 %6 %7 %8 %9
-goto end
-
-REM # END__________________________________________
-:end
-pause
+cd %SRV_PATH%\%app_path%
+start /I /B %stop_cmd% %2 %3 %4 %5 %6 %7 %8 %9
+exit

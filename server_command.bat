@@ -14,9 +14,11 @@ if "%1" == "php" (
 	
 ) else (
 	echo "You must specify program to control"
+	pause
 	exit
 )
 
+TITLE %1
 cd %SRV_PATH%\%app_path%
-start /B %start_cmd% %2 %3 %4 %5 %6 %7 %8 %9
+start /I /B %start_cmd% %2 %3 %4 %5 %6 %7 %8 %9
 exit
