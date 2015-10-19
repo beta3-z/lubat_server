@@ -1,6 +1,5 @@
 @echo off
 
-if "%command_list%" == "" echo Unknown server's set "%1"
 if "%1" == "web" (
 	set command_list=nginx mysql php
 ) else (
